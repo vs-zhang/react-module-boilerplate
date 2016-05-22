@@ -21,7 +21,7 @@ class TodoListComponent extends React.Component {
     this.setState({inputText: e.target.value});
   }
 
-  handleSubmit(e) {
+  handleSubmit() {
     if (this.state.inputText.trim()) {
       this.props.add(this.state.inputText);
       this.setState(initialState);

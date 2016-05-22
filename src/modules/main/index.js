@@ -1,6 +1,6 @@
 import React from 'react'
-import * as todos from '../todos'
 import { combineReducers } from 'redux'
+import * as todos from '../todos'
 
 if (module.hot) {
   module.hot.accept()
