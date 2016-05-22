@@ -15,7 +15,7 @@ if (!isProduction) {
   var bundle = require('./bundle.js');
   bundle();
 
-  app.all('/static/*', function (req, res) {
+  app.all('/build/*', function (req, res) {
     proxy.web(req, res, {
       target: 'http://localhost:8081'
     });
