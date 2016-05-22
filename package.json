@@ -4,6 +4,8 @@
   "description": "Boilerplate for ReactJS",
   "scripts": {
     "start": "node server.js",
+    "build": "NODE_ENV=production webpack -p --config webpack.prod.config.js",
+    "build_server": "NODE_ENV=production PORT=3001 node server.js",
     "lint": "eslint src"
   },
   "repository": {

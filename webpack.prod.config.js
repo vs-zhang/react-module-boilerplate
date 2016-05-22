@@ -4,19 +4,13 @@ var mainPath = path.resolve(__dirname, 'src', 'index.js');
 
 module.exports = {
   devtool: 'cheap-module-source-map',
-  entry: [
-    'webpack-dev-server/client?http://localhost:8081',
-    'webpack/hot/only-dev-server',
-    mainPath
-  ],
+  entry: [mainPath],
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'bundle.js',
     publicPath: '/build/'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
