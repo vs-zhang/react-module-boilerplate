@@ -1,4 +1,4 @@
-export const initialState = ['pay oven'];
+export const initialState = ['Something todo'];
 import { ADD } from './actions'
 import update from 'react/lib/update'
 

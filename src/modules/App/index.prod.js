@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as main from '../main'
 
-export default class Root extends Component {
+export default class App extends Component {
   render() {
     return (
       <div>
