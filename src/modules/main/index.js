@@ -1,13 +1,13 @@
 import React from 'react'
 import { combineReducers } from 'redux'
-import * as todos from '../todos'
+import * as todoList from '../todoList'
 
 if (module.hot) {
   module.hot.accept()
 }
 
 const reducer = combineReducers({
-  [todos.name]: todos.reducer
+  [todoList.name]: todoList.reducer
 });
 
 class Container extends React.Component {
@@ -15,7 +15,7 @@ class Container extends React.Component {
     return (
       <div>
         <h3>Todos app</h3>
-        <todos.TodoListComponent />
+        <todoList.TodoListComponent />
       </div>
     )
   }

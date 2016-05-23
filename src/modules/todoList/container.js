@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as actions from './actions'
 import { name } from './__init__'
+import * as todoItem from '../todoItem'
 
 let initialState = {
   inputText: ''
@@ -34,7 +35,7 @@ class TodoListComponent extends React.Component {
         <input value={this.state.inputText} style={{ width: '200px' }} onChange={this.handleChange}/>
         <button onClick={this.handleSubmit} style={{ width: '200px' }}>Add</button>
         { this.props.todos.map(
-          t => <div key={t}>{t}</div>
+          t => <todoItem.TodoItemComponent text={t} />
         ) }
       </div>
     );
