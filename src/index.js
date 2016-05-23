@@ -2,17 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as todos from './modules/todos'
 import { Provider } from 'react-redux'
-import * as main from './modules/main'
+import RootComponent from './modules/Root/Root'
 import { createStore, applyMiddleware } from 'redux'
-import { DevTools, enhancer } from './utils/devtools'
+import configureStore from './utils/store/configureStore'
 
-const store = createStore(main.reducer, {}, enhancer);
+const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
     <div>
-      <main.Container />
-      <DevTools />
+      <RootComponent />
     </div>
   </Provider>,
   document.getElementById('app')
