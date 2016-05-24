@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import * as main from '../../modules/main/index'
+import * as main from '../../components/main/index'
 import { compose } from 'redux'
 import { DevTools } from '../devtools'
 import { persistState } from 'redux-devtools';

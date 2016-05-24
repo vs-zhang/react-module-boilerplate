@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import * as actions from './actions'
 import { name } from './__init__'
 import * as todoItem from '../todoItem'
+import styles from './todoList.scss';
 
 let initialState = {
   inputText: ''
@@ -32,10 +33,10 @@ class TodoListComponent extends React.Component {
   render() {
     return (
       <div>
-        <input value={this.state.inputText} style={{ width: '200px' }} onChange={this.handleChange}/>
-        <button onClick={this.handleSubmit} style={{ width: '200px' }}>Add</button>
+        <input value={this.state.inputText} onChange={this.handleChange}/>
+        <button onClick={this.handleSubmit} className={styles.base}>Add</button>
         { this.props.todos.map(
-          t => <todoItem.TodoItemComponent text={t} />
+          t => <todoItem.TodoItemComponent text={t} key={t}/>
         ) }
       </div>
     );
