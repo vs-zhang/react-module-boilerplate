@@ -9,7 +9,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    path.join(__dirname, 'app/main.js')
+    path.join(__dirname, 'src/main.js')
   ],
   output: {
     path: path.join(__dirname, '/dist/'),
@@ -21,7 +21,7 @@ module.exports = {
       {
         test: /\.js?$/,
         loader: 'babel',
-        include: path.join(__dirname, 'app')
+        include: path.join(__dirname, 'src')
       },
       {
         test: /\.scss$/,
@@ -30,13 +30,13 @@ module.exports = {
           'css?modules&importLoaders=1&localIdentName=[name]__[local]',
           'sass?sourceMap'
         ],
-        include: path.join(__dirname, 'app')
+        include: path.join(__dirname, 'src')
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'app/index.tpl.html',
+      template: 'src/index.tpl.html',
       inject: 'body',
       filename: 'index.html'
     }),

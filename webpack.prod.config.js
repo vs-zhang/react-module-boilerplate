@@ -7,18 +7,18 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: [
-    path.join(__dirname, 'app/main.js')
+    path.join(__dirname, 'src/main.js')
   ],
   output: {
     path: path.join(__dirname, '/dist/'),
     filename: '[name].min.js'
   },
   plugins: [
-    new ExtractTextPlugin('/app.min.css', {
+    new ExtractTextPlugin('/src.min.css', {
       allChunks: true
     }),
     new HtmlWebpackPlugin({
-      template: 'app/index.tpl.html',
+      template: 'src/index.tpl.html',
       inject: 'body',
       filename: 'index.html'
     }),
@@ -38,7 +38,7 @@ module.exports = {
       {
         test: /\.js?$/,
         loader: 'babel',
-        include: path.join(__dirname, 'app')
+        include: path.join(__dirname, 'src')
       },
       {
         test: /\.json?$/,
@@ -47,7 +47,7 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]!sass'),
-        include: path.join(__dirname, 'app')
+        include: path.join(__dirname, 'src')
       }
     ]
   }
