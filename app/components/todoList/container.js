@@ -23,22 +23,25 @@ class TodoListComponent extends React.Component {
     this.setState({inputText: e.target.value});
   }
 
-  handleSubmit() {
-    if (this.state.inputText.trim()) {
-      this.props.add(this.state.inputText);
-      this.setState(initialState);
+  handleSubmit(e) {
+    if (e.keyCode == 13 || e.type == 'click') {
+      if (this.state.inputText.trim()) {
+        this.props.add(this.state.inputText);
+        this.setState(initialState);
+      }
     }
   }
 
   render() {
     return (
       <div>
-        <input value={this.state.inputText} onChange={this.handleChange}/>
-        <button onClick={this.handleSubmit} className={styles.base}>Add</button>
+        <input value={this.state.inputText} onKeyDown={this.handleSubmit} className={styles.input}
+               onChange={this.handleChange}/>
+        <button onClick={this.handleSubmit} className={styles.btn}>Add</button>
         { this.props.todos.map((t, index) => {
             return <todoItem.TodoItemComponent text={t} key={index}/>
           }
-        ) }
+        )}
       </div>
     );
   }
