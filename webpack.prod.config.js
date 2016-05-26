@@ -1,43 +1,53 @@
+'use strict';
+
 var path = require('path');
 var webpack = require('webpack');
-var mainPath = path.resolve(__dirname, 'src', 'index.js');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  devtool: 'cheap-module-source-map',
-  entry: [mainPath],
+  entry: [
+    path.join(__dirname, 'app/main.js')
+  ],
   output: {
-    path: path.join(__dirname, 'build'),
-    filename: 'bundle.js',
-    publicPath: '/build/'
+    path: path.join(__dirname, '/dist/'),
+    filename: '[name].min.js'
   },
   plugins: [
     new ExtractTextPlugin('/app.min.css', {
       allChunks: true
     }),
+    new HtmlWebpackPlugin({
+      template: 'app/index.tpl.html',
+      inject: 'body',
+      filename: 'index.html'
+    }),
+    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
-      compress: {
+      compressor: {
         warnings: false,
         screw_ie8: true
       }
     }),
     new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-      }
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
   ],
   module: {
     loaders: [
       {
-        test: /\.js$/,
-        loaders: ['react-hot', 'babel'],
-        include: path.join(__dirname, 'src')
+        test: /\.js?$/,
+        loader: 'babel',
+        include: path.join(__dirname, 'app')
+      },
+      {
+        test: /\.json?$/,
+        loader: 'json'
       },
       {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]!sass'),
-        exclude: /node_modules|lib/,
+        include: path.join(__dirname, 'app')
       }
     ]
   }

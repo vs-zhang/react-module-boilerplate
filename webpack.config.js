@@ -1,39 +1,27 @@
+'use strict';
+
 var path = require('path');
 var webpack = require('webpack');
-var mainPath = path.resolve(__dirname, 'src', 'index.js');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   devtool: 'cheap-module-source-map',
   entry: [
-    'webpack-dev-server/client?http://localhost:8081',
+    'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    mainPath
+    path.join(__dirname, 'app/main.js')
   ],
   output: {
-    path: path.join(__dirname, 'build'),
-    filename: 'bundle.js',
-    publicPath: '/build/'
+    path: path.join(__dirname, '/dist/'),
+    filename: '[name].js',
+    publicPath: '/'
   },
-  plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('dev')
-      }
-    })
-  ],
   module: {
     loaders: [
       {
-        test: /\.js$/,
-        loaders: ['react-hot', 'babel'],
-        include: path.join(__dirname, 'src')
-      },
-      {
-        test: /\.css$/,
-        loader: 'style!css?modules&localIdentName=[name]---[local]'
+        test: /\.js?$/,
+        loader: 'babel',
+        include: path.join(__dirname, 'app')
       },
       {
         test: /\.scss$/,
@@ -42,8 +30,24 @@ module.exports = {
           'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]',
           'sass?sourceMap'
         ],
-        include: path.join(__dirname, 'src')
+        include: path.join(__dirname, 'app')
       }
     ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'app/index.tpl.html',
+      inject: 'body',
+      filename: 'index.html'
+    }),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('dev')
+    })
+  ],
+  node: {
+    fs: 'empty'
   }
 };

@@ -1,1 +1,10 @@
-React Module Boilerplate
+## React Module Boilerplate
+
+
+### How to Install
+
+    npm install 
+ 
+### File structure
+
+

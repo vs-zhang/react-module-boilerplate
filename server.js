@@ -1,31 +1,42 @@
-var express = require('express');
 var path = require('path');
-var httpProxy = require('http-proxy');
-
-var proxy = httpProxy.createProxyServer();
-var app = express();
+var express = require('express');
+var webpack = require('webpack');
+var webpackConfig = require('./webpack.config.js');
+var WebpackDevServer = require('webpack-dev-server');
 
 var isProduction = process.env.NODE_ENV === 'production';
-var port = isProduction ? process.env.PORT : 3000;
-var publicPath = path.resolve(__dirname, './');
-
-app.use(express.static(publicPath));
+var APP_PORT = isProduction ? process.env.PORT : 3000;
+var app = new express();
 
 if (!isProduction) {
-  var bundle = require('./bundle.js');
-  bundle();
+  var bundleStart = null;
+  var compiler = webpack(webpackConfig);
 
-  app.all('/build/*', function (req, res) {
-    proxy.web(req, res, {
-      target: 'http://localhost:8081'
-    });
+  compiler.plugin('compile', function () {
+    console.log('Bundling...');
+    bundleStart = Date.now();
+  });
+
+  compiler.plugin('done', function () {
+    console.log('Bundled in ' + (Date.now() - bundleStart) + 'ms!');
+  });
+
+  app = new WebpackDevServer(compiler, {
+    publicPath: webpackConfig.output.publicPath,
+    hot: true,
+    quiet: false,
+    noInfo: true,
+    stats: {
+      colors: true
+    }
+  });
+} else {
+  app.use(express.static('./dist'));
+  app.get('*', function response(req, res) {
+    res.sendFile(path.join(__dirname, 'dist/index.html'));
   });
 }
 
-proxy.on('error', function(e) {
-  console.log('Could not connect to proxy, please try again...');
-});
-
-app.listen(port, function () {
-  console.log('Server running on port ' + port);
+app.listen(APP_PORT, function () {
+  console.log('Server running on port ' + APP_PORT);
 });
