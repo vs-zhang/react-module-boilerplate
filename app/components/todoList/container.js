@@ -35,8 +35,9 @@ class TodoListComponent extends React.Component {
       <div>
         <input value={this.state.inputText} onChange={this.handleChange}/>
         <button onClick={this.handleSubmit} className={styles.base}>Add</button>
-        { this.props.todos.map(
-          t => <todoItem.TodoItemComponent text={t} key={t}/>
+        { this.props.todos.map((t, index) => {
+            return <todoItem.TodoItemComponent text={t} key={index}/>
+          }
         ) }
       </div>
     );
