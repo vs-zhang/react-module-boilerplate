@@ -38,7 +38,7 @@ class TodoListComponent extends React.Component {
         <input value={this.state.inputText} onKeyDown={this.handleSubmit} className={styles.input}
                onChange={this.handleChange}/>
         <button onClick={this.handleSubmit} className={styles.btn}>Add</button>
-        { this.props.todos.map((t, index) => {
+        { this.props.model.map((t, index) => {
             return <todoItem.TodoItemComponent text={t} key={index}/>
           }
         )}
@@ -48,7 +48,7 @@ class TodoListComponent extends React.Component {
 }
 
 var mapStateToProps = function (state) {
-  return state;
+  return {model: state[name]};
 };
 
 export default connect(mapStateToProps, dispatch => bindActionCreators(actions, dispatch))(TodoListComponent);
