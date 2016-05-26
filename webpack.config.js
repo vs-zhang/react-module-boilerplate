@@ -27,7 +27,7 @@ module.exports = {
         test: /\.scss$/,
         loaders: [
           'style?sourceMap',
-          'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]',
+          'css?modules&importLoaders=1&localIdentName=[name]__[local]',
           'sass?sourceMap'
         ],
         include: path.join(__dirname, 'app')
