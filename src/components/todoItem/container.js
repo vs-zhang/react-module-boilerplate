@@ -5,6 +5,6 @@ export const TodoItemComponent = (props) => (
 )
 
 TodoItemComponent.propTypes = {
-  key: React.PropTypes.string.isRequired,
+  key: React.PropTypes.number,
   text: React.PropTypes.string.isRequired
 }

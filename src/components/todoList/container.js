@@ -64,4 +64,4 @@ TodoListComponent.propTypes = {
   add: React.PropTypes.func.isRequired
 }
 
-export default connect(mapStateToProps, mapDispatchToProps())(TodoListComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(TodoListComponent)
