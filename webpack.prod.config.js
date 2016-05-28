@@ -14,7 +14,7 @@ module.exports = {
     filename: '[name].min.js'
   },
   plugins: [
-    new ExtractTextPlugin('/src.min.css', {
+    new ExtractTextPlugin('/app.min.css', {
       allChunks: true
     }),
     new HtmlWebpackPlugin({

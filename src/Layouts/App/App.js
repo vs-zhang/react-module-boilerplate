@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import * as main from './main'
 import { Link } from 'react-router'
 let template;
 if (process.env.NODE_ENV !== 'production') {
-  var DevTools = require('../utils/devtools').DevTools;
+  var DevTools = require('../../utils/devtools').DevTools;
   template = <DevTools />;
 }
 
-export const App = ({children}) => (
+export const AppLayout = ({children}) => (
   <div>
     <header>
       <Link to="/">Home</Link>
