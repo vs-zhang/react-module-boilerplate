@@ -1,13 +1,19 @@
 import React from 'react'
 import { combineReducers } from 'redux'
+import { routerReducer } from 'react-router-redux'
 import * as todoList from '../todoList'
+import * as about from '../about'
+
 
 if (module.hot) {
   module.hot.accept()
 }
 
+// TODO: fix hot reload module
+
 const reducer = combineReducers({
-  [todoList.name]: todoList.reducer
+  [todoList.name]: todoList.reducer,
+  routing: routerReducer
 });
 
 class Container extends React.Component {
