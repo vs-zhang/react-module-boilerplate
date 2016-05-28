@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default class TodoItemComponent extends React.Component {
-  render() {
-    return (
-      <div key={this.props.key}>{this.props.text}</div>
-    )
-  }
+export const TodoItemComponent = (props) => (
+  <div key={props.key}>{props.text}</div>
+)
+
+TodoItemComponent.propTypes = {
+  key: React.PropTypes.string.isRequired,
+  text: React.PropTypes.string.isRequired
 }

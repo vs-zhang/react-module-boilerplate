@@ -1,3 +1,3 @@
-import TodoItemComponent from './container'
+import { TodoItemComponent } from './container'
 
 export { TodoItemComponent }

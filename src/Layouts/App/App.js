@@ -1,18 +1,22 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router'
-let template;
+import React from 'react'
+import { HeaderLayout } from '../Header/Header'
+
+let template
 if (process.env.NODE_ENV !== 'production') {
-  var DevTools = require('../../utils/devtools').DevTools;
-  template = <DevTools />;
+  /* eslint-disable global-require */
+  const DevTools = require('../../utils/devtools').DevTools
+  /* eslint-enable global-require */
+  template = <DevTools />
 }
 
-export const AppLayout = ({children}) => (
+export const AppLayout = ({ children }) => (
   <div>
-    <header>
-      <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
-    </header>
+    <HeaderLayout />
     <div>{children}</div>
     {template}
   </div>
-);
+)
+
+AppLayout.propTypes = {
+  children: React.PropTypes.element.isRequired
+}

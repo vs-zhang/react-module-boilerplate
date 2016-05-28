@@ -1,4 +1,3 @@
-import React from 'react'
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 import * as todoList from '../todoList'
@@ -10,6 +9,6 @@ if (module.hot) {
 const reducer = combineReducers({
   [todoList.name]: todoList.reducer,
   routing: routerReducer
-});
+})
 
 export { reducer }

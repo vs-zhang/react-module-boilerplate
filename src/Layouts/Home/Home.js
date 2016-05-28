@@ -3,7 +3,7 @@ import * as todoList from '../../components/todoList'
 
 export const HomeLayout = () => (
   <div>
-    <h3>Todos app</h3>
+    <h3>Todo app</h3>
     <todoList.TodoListComponent />
   </div>
 )
