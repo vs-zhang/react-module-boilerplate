@@ -1,0 +1,16 @@
+@import '../../style/var';
+
+.nav {
+  background-color: $flat-blue;
+  height: 70px;
+  vertical-align: middle;
+  line-height: 70px;
+}
+
+.link {
+  color: $flat-white;
+  padding: 10px;
+  &:hover {
+    color: $flat-dark;
+  }
+}

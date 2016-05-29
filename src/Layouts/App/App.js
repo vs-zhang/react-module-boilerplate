@@ -1,5 +1,6 @@
 import React from 'react'
 import { HeaderLayout } from '../Header/Header'
+import styles from './App.scss'
 
 let template
 if (process.env.NODE_ENV !== 'production') {
@@ -12,7 +13,7 @@ if (process.env.NODE_ENV !== 'production') {
 export const AppLayout = ({ children }) => (
   <div>
     <HeaderLayout />
-    <div>{children}</div>
+    <div className={styles.container}>{children}</div>
     {template}
   </div>
 )

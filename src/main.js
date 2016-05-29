@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
+import './style/app.scss'
 import { AppLayout, HomeLayout, AboutLayout } from './Layouts/Main'
 
 import configureStore from './utils/store/configureStore'
