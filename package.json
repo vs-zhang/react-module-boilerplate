@@ -1,6 +1,9 @@
 {
   "name": "react-module-boilerplate",
   "version": "0.0.1",
+  "engines": {
+    "node": "5.x"
+  },
   "description": "Boilerplate for ReactJS",
   "scripts": {
     "start": "node server.js",
