@@ -10,7 +10,8 @@
     "build:prod": "NODE_ENV=production webpack -p --config webpack.prod.config.js",
     "server:prod": "NODE_ENV=production PORT=3000 node server.js",
     "lint": "eslint src",
-    "build": "npm run build:prod && npm run server:prod",
+    "clean": "rimraf dist",
+    "build": "npm run clean && npm run build:prod && npm run server:prod",
     "postinstall": "npm run build"
   },
   "repository": {
