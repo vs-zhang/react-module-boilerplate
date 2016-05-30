@@ -38,6 +38,10 @@ if (!isProduction) {
   });
 }
 
+if (!APP_PORT) {
+  APP_PORT = 3000;
+}
+
 app.listen(APP_PORT, function () {
   console.log('Server running on port ' + APP_PORT);
 });
