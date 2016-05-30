@@ -2,7 +2,6 @@ var path = require('path');
 var express = require('express');
 var webpack = require('webpack');
 var webpackConfig = require('./webpack.config.js');
-var WebpackDevServer = require('webpack-dev-server');
 
 var isProduction = process.env.NODE_ENV === 'production';
 var APP_PORT = isProduction ? process.env.PORT : 3000;
@@ -10,6 +9,7 @@ var app = new express();
 
 if (!isProduction) {
   var bundleStart = null;
+  var WebpackDevServer = require('webpack-dev-server');
   var compiler = webpack(webpackConfig);
 
   compiler.plugin('compile', function () {
