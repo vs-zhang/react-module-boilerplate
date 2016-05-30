@@ -41,6 +41,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.tpl.html',
       inject: 'body',
+      favicon: path.join(__dirname, 'src', 'assets/favicon.ico'),
       filename: 'index.html'
     }),
     new webpack.optimize.OccurenceOrderPlugin(),

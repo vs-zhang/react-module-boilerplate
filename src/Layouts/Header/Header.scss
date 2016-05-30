@@ -10,7 +10,7 @@
 .link {
   color: $flat-white;
   padding: 10px;
-  &:hover {
+  &:hover, &.active {
     color: $flat-dark;
   }
 }
