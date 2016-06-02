@@ -13,6 +13,11 @@ module.exports = {
     path: path.join(__dirname, '/dist/'),
     filename: '[name].min.js'
   },
+  externals: {
+    'cheerio': 'window',
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true
+  },
   plugins: [
     new ExtractTextPlugin('/app.min.css', {
       allChunks: true
