@@ -7,7 +7,8 @@
   "description": "Boilerplate for ReactJS",
   "scripts": {
     "start": "node server.js",
-    "test": "mocha -w tests/helpers/browser.js tests/**/*.spec.js",
+    "test": "mocha --require tests/helpers/browser.js tests/**/*.spec.js",
+    "test:watch": "mocha -w tests/helpers/browser.js tests/**/*.spec.js",
     "build:prod": "NODE_ENV=production webpack -p --config webpack.prod.config.js",
     "server:prod": "NODE_ENV=production node server.js",
     "lint": "eslint src",
