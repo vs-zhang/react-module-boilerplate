@@ -1,28 +1,30 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
 import './style/app.scss'
-import { AppLayout, HomeLayout, AboutLayout } from './Layouts/Main'
+import { AppLayout } from './Layouts/App/App'
 
 import configureStore from './utils/store/configureStore'
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import { browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 
 
 const store = configureStore()
-
+const root = document.getElementById('app')
 const history = syncHistoryWithStore(browserHistory, store)
 
 ReactDOM.render(
-  <Provider store={store}>
-    <div>
-      <Router history={history}>
-        <Route path="/" component={AppLayout}>
-          <IndexRoute component={HomeLayout} />
-          <Route path="about" component={AboutLayout} />
-        </Route>
-      </Router>
-    </div>
-  </Provider>,
-  document.getElementById('app')
+  <AppLayout store={store} history={history} />,
+  root
 )
+
+if (module.hot) {
+  module.hot.accept('./Layouts/App/App', () => {
+    /* eslint-disable global-require */
+    const NewAppLayout = require('./Layouts/App/App').AppLayout
+    /* eslint-enable global-require */
+    ReactDOM.render(
+      <NewAppLayout store={store} history={history} />,
+      root
+    )
+  })
+}

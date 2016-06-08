@@ -1,23 +1,23 @@
 import React from 'react'
-import { HeaderLayout } from '../Header/Header'
-import styles from './App.scss'
+import { Provider } from 'react-redux'
+import { Router, Route, IndexRoute } from 'react-router'
+import { CoreLayout, HomeLayout, AboutLayout } from '../Main'
 
-let template
-if (process.env.NODE_ENV !== 'production') {
-  /* eslint-disable global-require */
-  const DevTools = require('../../utils/devtools').DevTools
-  /* eslint-enable global-require */
-  template = <DevTools />
-}
 
-export const AppLayout = ({ children }) => (
-  <div>
-    <HeaderLayout />
-    <div className={styles.container}>{children}</div>
-    {template}
-  </div>
+export const AppLayout = ({ store, history }) => (
+  <Provider store={store}>
+    <div>
+      <Router history={history}>
+        <Route path="/" component={CoreLayout}>
+          <IndexRoute component={HomeLayout} />
+          <Route path="about" component={AboutLayout} />
+        </Route>
+      </Router>
+    </div>
+  </Provider>
 )
 
 AppLayout.propTypes = {
-  children: React.PropTypes.element.isRequired
+  store: React.PropTypes.object.isRequired,
+  history: React.PropTypes.object.isRequired
 }
