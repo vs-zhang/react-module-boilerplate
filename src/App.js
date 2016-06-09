@@ -2,7 +2,7 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import { Router, Route, IndexRoute } from 'react-router'
 import { CoreLayout, HomeLayout, AboutLayout } from './Layouts/Main'
-
+import './style/app.scss'
 
 export const App = ({ store, history }) => (
   <Provider store={store}>
