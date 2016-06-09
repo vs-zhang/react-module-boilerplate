@@ -23,7 +23,6 @@ if (!isProduction) {
 
   app = new WebpackDevServer(compiler, {
     publicPath: webpackConfig.output.publicPath,
-    hot: true,
     historyApiFallback: true,
     quiet: false,
     noInfo: true,
