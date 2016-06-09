@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './style/app.scss'
-import { AppLayout } from './Layouts/App/App'
+import { App } from './App'
 
 import configureStore from './utils/store/configureStore'
 import { browserHistory } from 'react-router'
@@ -13,17 +13,17 @@ const root = document.getElementById('app')
 const history = syncHistoryWithStore(browserHistory, store)
 
 ReactDOM.render(
-  <AppLayout store={store} history={history} />,
+  <App store={store} history={history} />,
   root
 )
 
 if (module.hot) {
-  module.hot.accept('./Layouts/App/App', () => {
+  module.hot.accept('./App', () => {
     /* eslint-disable global-require */
-    const NewAppLayout = require('./Layouts/App/App').AppLayout
+    const NewApp = require('./App').AppLayout
     /* eslint-enable global-require */
     ReactDOM.render(
-      <NewAppLayout store={store} history={history} />,
+      <NewApp store={store} history={history} />,
       root
     )
   })

@@ -9,7 +9,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    path.join(__dirname, 'src/main.js')
+    path.join(__dirname, 'src/entry.js')
   ],
   output: {
     path: path.join(__dirname, '/dist/'),

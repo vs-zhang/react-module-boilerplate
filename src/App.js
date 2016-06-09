@@ -1,10 +1,10 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { Router, Route, IndexRoute } from 'react-router'
-import { CoreLayout, HomeLayout, AboutLayout } from '../Main'
+import { CoreLayout, HomeLayout, AboutLayout } from './Layouts/Main'
 
 
-export const AppLayout = ({ store, history }) => (
+export const App = ({ store, history }) => (
   <Provider store={store}>
     <div>
       <Router history={history}>
@@ -17,7 +17,7 @@ export const AppLayout = ({ store, history }) => (
   </Provider>
 )
 
-AppLayout.propTypes = {
+App.propTypes = {
   store: React.PropTypes.object.isRequired,
   history: React.PropTypes.object.isRequired
 }
