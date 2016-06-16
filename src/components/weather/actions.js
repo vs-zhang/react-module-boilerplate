@@ -1,7 +1,7 @@
 import * as axios from 'axios'
 
-const currentWeatherURL = 'http://api.wunderground.com/api/19dd56f6f3e36e89/conditions/q/MA/02169.json'
-const forecastWeatherURL = 'http://api.wunderground.com/api/c65f8990255a1839/forecast/q/02169.json'
+const currentWeatherURL = 'https://api.wunderground.com/api/19dd56f6f3e36e89/conditions/q/MA/02169.json'
+const forecastWeatherURL = 'https://api.wunderground.com/api/c65f8990255a1839/forecast/q/02169.json'
 
 function getCurrentWeatherData() {
   return axios.get(currentWeatherURL)
