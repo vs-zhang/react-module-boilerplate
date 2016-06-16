@@ -1,0 +1,104 @@
+@import '../../style/var';
+
+.container {
+  box-shadow: 3px 3px 3px lightgray;
+  .header {
+    background-color: $flat-blue;
+    color: $flat-white;
+    padding: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-color: $flat-blue;
+    border-top: 1px solid $flat-blue;
+    border-left: 1px solid $flat-blue;
+    border-right: 1px solid $flat-blue;
+    .city {
+      display: inline-block;
+      width: 70%;
+      vertical-align: top;
+      .name {
+        font-size: 18px;
+        line-height: 1.5;
+      }
+      .desc {
+        font-size: 14px;
+      }
+    }
+    .clock {
+      display: inline-block;
+      width: 30%;
+      font-size: 25px;
+      vertical-align: top;
+      text-align: right;
+    }
+  }
+  .content {
+    background-color: white;
+    color: $flat-dark;
+    .current {
+      padding: 10px;
+      .currentleft {
+        display: inline-block;
+        width: 30%;
+        font-size: 11px;
+        height: 80px;
+        position: relative;
+        .currenthumidity {
+          position: absolute;
+          top: 0;
+        }
+        .currentwind {
+          position: absolute;
+          bottom: 0;
+        }
+      }
+      .currenticon {
+        display: inline-block;
+        width: 40%;
+        text-align: center;
+        font-size: 65px;
+        vertical-align: top;
+        color: $flat-dark-blue;
+      }
+      .currentright {
+        display: inline-block;
+        width: 30%;
+        text-align: right;
+        font-size: 11px;
+        height: 80px;
+        position: relative;
+        .currenttemp {
+          position: absolute;
+          top: 0;
+          right: 0;
+          font-size: 25px;
+        }
+        .currentdate {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+        }
+      }
+    }
+    .forecast {
+      border-top: 1px solid lightgray;
+      padding: 10px;
+      .forecastbox {
+        display: inline-block;
+        width: 25%;
+        text-align: center;
+        vertical-align: top;
+        &:not(:last-of-type) {
+          border-right: 1px solid lightgray
+        }
+        .forecastboxcondition {
+          font-size: 10px;
+        }
+        .forecastboxicon {
+          color: #B5B5B5;
+          font-size: 25px;
+        }
+      }
+    }
+  }
+}

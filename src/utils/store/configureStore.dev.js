@@ -1,7 +1,8 @@
-import { createStore, compose } from 'redux'
+import { createStore, compose, applyMiddleware } from 'redux'
 import * as main from '../../components/main/index'
 import { DevTools } from '../devtools'
 import { persistState } from 'redux-devtools'
+import thunk from 'redux-thunk'
 
 function getDebugSessionKey() {
   const matches = window.location.href.match(/[?&]debug_session=([^&]+)\b/)
@@ -9,6 +10,9 @@ function getDebugSessionKey() {
 }
 
 const enhancer = compose(
+  applyMiddleware(
+    thunk
+  ),
   DevTools.instrument(),
   persistState(getDebugSessionKey())
 )
