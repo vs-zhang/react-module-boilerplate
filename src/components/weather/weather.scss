@@ -2,6 +2,12 @@
 
 .container {
   box-shadow: 3px 3px 3px lightgray;
+  .front {
+    display: block;
+  }
+  .back {
+    display: block;
+  }
   .header {
     background-color: $flat-blue;
     color: $flat-white;
@@ -21,7 +27,7 @@
         line-height: 1.5;
       }
       .desc {
-        font-size: 14px;
+         font-size: 14px;
       }
     }
     .clock {

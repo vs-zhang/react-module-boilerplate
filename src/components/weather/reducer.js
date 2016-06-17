@@ -1,5 +1,5 @@
 const initialState = {
-  city: '',
+  city: 'Boston',
   description: '',
   humidity: '',
   temp: 0,
