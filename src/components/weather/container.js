@@ -72,64 +72,67 @@ class WeatherComponent extends React.Component {
       forecastList,
       timeString,
       dateString
-    } = this.props
+      } = this.props
 
     return (
       <div styleName="container">
-        <div styleName="front">
-          <div styleName="header">
-            <div styleName="city">
-              <div styleName="name">{city}</div>
-              <div styleName="desc">{description}</div>
+        <div styleName="flipper">
+          <div styleName="front">
+            <div styleName="header">
+              <div styleName="city">
+                <div styleName="name">{city}</div>
+                <div styleName="desc">{description}</div>
+              </div>
+              <div styleName="clock">{timeString}</div>
             </div>
-            <div styleName="clock">{timeString}</div>
-          </div>
 
-          <div styleName="content">
-            <div styleName="current">
-              <div styleName="currentleft">
-                <div styleName="currenthumidity">
-                  Humidity: {humidity}
-                </div>
-                <div styleName="currentwind">
-                  <i className="wi wi-strong-wind"></i>
-                  10mph
-                </div>
-              </div>
-              <div styleName="currenticon">
-                <i className={iconClass}></i>
-              </div>
-              <div styleName="currentright">
-                <div styleName="currenttemp">
-                  {temp}°F
-                </div>
-                <div styleName="currentdate">
-                  {dateString}
-                </div>
-              </div>
-            </div>
-            <div styleName="forecast">
-              {forecastList.map((t, index) => (
-                <div key={index} styleName="forecastbox">
-                  <div>{t.day}</div>
-                  <div styleName="forecastboxcondition">{t.conditions}</div>
-                  <div>{t.tempHigh}/{t.tempLow}</div>
-                  <div styleName="forecastboxicon">
-                    <i className={t.iconClass}></i>
+            <div styleName="content">
+              <div styleName="current">
+                <div styleName="currentleft">
+                  <div styleName="currenthumidity">
+                    Humidity: {humidity}
+                  </div>
+                  <div styleName="currentwind">
+                    <i className="wi wi-strong-wind"></i>
+                    10mph
                   </div>
                 </div>
-                )
-              )}
+                <div styleName="currenticon">
+                  <i className={iconClass}></i>
+                </div>
+                <div styleName="currentright">
+                  <div styleName="currenttemp">
+                    {temp}°F
+                  </div>
+                  <div styleName="currentdate">
+                    {dateString}
+                  </div>
+                </div>
+              </div>
+              <div styleName="forecast">
+                {forecastList.map((t, index) => (
+                  <div key={index} styleName="forecastbox">
+                    <div>{t.day}</div>
+                    <div styleName="forecastboxcondition">{t.conditions}</div>
+                    <div>{t.tempHigh}/{t.tempLow}</div>
+                    <div styleName="forecastboxicon">
+                      <i className={t.iconClass}></i>
+                    </div>
+                  </div>
+                  )
+                )}
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className={styles.back}>
-          <input
-            value={this.state.searchText}
-            onChange={this.handleChange}
-          />
-          <button onClick={this.handleSubmit}>Search</button>
+
+          <div styleName="back">
+            <input
+              value={this.state.searchText}
+              onChange={this.handleChange}
+            />
+            <button onClick={this.handleSubmit}>Search</button>
+          </div>
         </div>
       </div>
     )

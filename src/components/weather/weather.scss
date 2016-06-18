@@ -2,22 +2,36 @@
 
 .container {
   box-shadow: 3px 3px 3px lightgray;
-  .front {
-    display: block;
+  border: 1px solid #D3D3D3;
+  perspective: 1000px;
+  &:hover {
+    .flipper {
+      transform: rotateY(180deg);
+    }
   }
-  .back {
-    display: block;
+  .flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+
+    position: relative;
+    .front {
+      z-index: 2;
+      transform: rotateY(0deg);
+      backface-visibility: hidden;
+    }
+    .back {
+      transform: rotateY(180deg);
+      backface-visibility: hidden;
+      position: absolute;
+      top: 140px;
+      left: 62px;
+    }
   }
+
   .header {
     background-color: $flat-blue;
     color: $flat-white;
     padding: 10px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border-color: $flat-blue;
-    border-top: 1px solid $flat-blue;
-    border-left: 1px solid $flat-blue;
-    border-right: 1px solid $flat-blue;
     .city {
       display: inline-block;
       width: 70%;
@@ -27,7 +41,7 @@
         line-height: 1.5;
       }
       .desc {
-         font-size: 14px;
+        font-size: 14px;
       }
     }
     .clock {
