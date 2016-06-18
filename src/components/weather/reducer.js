@@ -3,6 +3,7 @@ const initialState = {
   description: '',
   humidity: '',
   temp: 0,
+  shouldFetch: true,
   iconClass: '',
   dateString: '',
   timeString: '',

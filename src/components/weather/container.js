@@ -16,6 +16,8 @@ const mapStateToProps = (state) => {
   const dateString = model.dateString
   const timeString = model.timeString
   const iconClass = `wi wi-wu-${model.icon}`
+  const shouldFetch = model.shouldFetch
+
   return {
     city,
     description,
@@ -24,7 +26,8 @@ const mapStateToProps = (state) => {
     iconClass,
     forecastList,
     dateString,
-    timeString
+    timeString,
+    shouldFetch
   }
 }
 
@@ -42,8 +45,10 @@ class WeatherComponent extends React.Component {
   }
 
   componentDidMount() {
-    const { dispatch } = this.props
-    dispatch(searchWeatherAction(this.props.city))
+    const { dispatch, shouldFetch } = this.props
+    if (shouldFetch) {
+      dispatch(searchWeatherAction(this.props.city))
+    }
   }
 
   handleChange(e) {
@@ -139,6 +144,7 @@ WeatherComponent.propTypes = {
   iconClass: React.PropTypes.string.isRequired,
   timeString: React.PropTypes.string.isRequired,
   dateString: React.PropTypes.string.isRequired,
+  shouldFetch: React.PropTypes.bool.isRequired,
   forecastList: React.PropTypes.array.isRequired,
   dispatch: React.PropTypes.func.isRequired
 }

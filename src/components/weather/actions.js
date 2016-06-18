@@ -2,14 +2,12 @@ import * as axios from 'axios'
 
 
 function getCurrentWeatherData(location) {
-  console.log(location)
   const { lat, lng } = location
   const currentWeatherURL = `https://api.wunderground.com/api/19dd56f6f3e36e89/conditions/q/${lat},${lng}.json`
   return axios.get(currentWeatherURL)
 }
 
 function getForecastWeatherData(location) {
-  console.log(location)
   const { lat, lng } = location
   const forecastWeatherURL = `https://api.wunderground.com/api/c65f8990255a1839/forecast/q/${lat},${lng}.json`
   return axios.get(forecastWeatherURL)
@@ -26,7 +24,8 @@ function fetchWeatherData(dispatch, location) {
   fetchWeatherDataAPI(location, (currentWeatherData, forecastWeatherData) => {
     const {
       display_location,
-      icon, temp_f,
+      icon,
+      temp_f,
       relative_humidity,
       weather
       } = currentWeatherData.current_observation
@@ -52,6 +51,7 @@ function fetchWeatherData(dispatch, location) {
       temp: Math.round(temp_f),
       timeString: `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`,
       dateString: date.toDateString(),
+      shouldFetch: false,
       icon,
       forecastList
     }
@@ -79,14 +79,9 @@ function searchWeather(dispatch, searchText) {
   })
 }
 
-export function fetchWeatherDataAction() {
-  return dispatch => {
-    fetchWeatherData(dispatch)
-  }
-}
-
 export function searchWeatherAction(searchText = 'Boston, MA') {
-  return dispatch => {
+  return (dispatch, getState) => {
+    console.log(getState())
     searchWeather(dispatch, searchText)
   }
 }
