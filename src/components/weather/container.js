@@ -4,6 +4,7 @@ import { searchWeatherAction } from './actions'
 import { name } from './__init__'
 import CSSModules from 'react-css-modules'
 import styles from './weather.scss'
+import sunnyImage from '../../assets/images/weather_icons/sunny.png'
 
 const mapStateToProps = (state) => {
   const model = state[name]
@@ -15,7 +16,7 @@ const mapStateToProps = (state) => {
   const forecastList = model.forecastList
   const dateString = model.dateString
   const timeString = model.timeString
-  const iconClass = `wi wi-wu-${model.icon}`
+  const icon = model.icon
   const shouldFetch = model.shouldFetch
 
   return {
@@ -23,10 +24,10 @@ const mapStateToProps = (state) => {
     description,
     humidity,
     temp,
-    iconClass,
     forecastList,
     dateString,
     timeString,
+    icon,
     shouldFetch
   }
 }
@@ -42,6 +43,7 @@ class WeatherComponent extends React.Component {
     this.state = initialState
     this.handleChange = ::this.handleChange
     this.handleSubmit = ::this.handleSubmit
+    this.getImageUrl = ::this.getImageUrl
   }
 
   componentDidMount() {
@@ -49,6 +51,10 @@ class WeatherComponent extends React.Component {
     if (shouldFetch) {
       dispatch(searchWeatherAction(this.props.city))
     }
+  }
+
+  getImageUrl(icon = 'unknown') {
+    return require(`../../assets/images/weather_icons/${icon}.png`)
   }
 
   handleChange(e) {
@@ -68,10 +74,10 @@ class WeatherComponent extends React.Component {
       description,
       humidity,
       temp,
-      iconClass,
       forecastList,
       timeString,
-      dateString
+      dateString,
+      icon
       } = this.props
 
     return (
@@ -98,7 +104,9 @@ class WeatherComponent extends React.Component {
                   </div>
                 </div>
                 <div styleName="currenticon">
-                  <i className={iconClass}></i>
+                  <div>
+                    <img styleName="currentimage" src={this.getImageUrl(icon)} alt={icon} />
+                  </div>
                 </div>
                 <div styleName="currentright">
                   <div styleName="currenttemp">
@@ -116,7 +124,7 @@ class WeatherComponent extends React.Component {
                     <div styleName="forecastboxcondition">{t.conditions}</div>
                     <div>{t.tempHigh}/{t.tempLow}</div>
                     <div styleName="forecastboxicon">
-                      <i className={t.iconClass}></i>
+                      <img styleName="forecastboximage" src={this.getImageUrl(t.icon)} alt={t.icon} />
                     </div>
                   </div>
                   )
@@ -144,7 +152,7 @@ WeatherComponent.propTypes = {
   description: React.PropTypes.string.isRequired,
   humidity: React.PropTypes.string.isRequired,
   temp: React.PropTypes.number.isRequired,
-  iconClass: React.PropTypes.string.isRequired,
+  icon: React.PropTypes.string.isRequired,
   timeString: React.PropTypes.string.isRequired,
   dateString: React.PropTypes.string.isRequired,
   shouldFetch: React.PropTypes.bool.isRequired,

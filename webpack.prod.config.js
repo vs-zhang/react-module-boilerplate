@@ -57,6 +57,10 @@ module.exports = {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]!sass'),
         include: path.join(__dirname, 'src')
+      },
+      {
+        test: /\.(png|jpg)$/,
+        loader: 'url?limit=8192'
       }
     ]
   }

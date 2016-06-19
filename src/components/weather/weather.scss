@@ -61,7 +61,7 @@
         display: inline-block;
         width: 30%;
         font-size: 11px;
-        height: 80px;
+        height: 100px;
         position: relative;
         .currenthumidity {
           position: absolute;
@@ -79,13 +79,17 @@
         font-size: 65px;
         vertical-align: top;
         color: $flat-dark-blue;
+        .currentimage {
+          width: 100px;
+          height: 100px;
+        }
       }
       .currentright {
         display: inline-block;
         width: 30%;
         text-align: right;
         font-size: 11px;
-        height: 80px;
+        height: 100px;
         position: relative;
         .currenttemp {
           position: absolute;
@@ -113,10 +117,16 @@
         }
         .forecastboxcondition {
           font-size: 10px;
+          height: 35px;
+          padding: 5px 0;
         }
         .forecastboxicon {
           color: #B5B5B5;
           font-size: 25px;
+          .forecastboximage {
+            width: 40px;
+            height: 40px;
+          }
         }
       }
     }

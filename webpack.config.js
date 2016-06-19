@@ -39,6 +39,10 @@ module.exports = {
           'sass?sourceMap'
         ],
         include: path.join(__dirname, 'src')
+      },
+      {
+        test: /\.(png|jpg)$/,
+        loader: 'url?limit=8192'
       }
     ]
   },

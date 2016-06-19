@@ -40,7 +40,7 @@ function fetchWeatherData(dispatch, location) {
       forecast.tempHigh = day.high.fahrenheit
       forecast.tempLow = day.low.fahrenheit
       forecast.day = day.date.weekday_short
-      forecast.iconClass = `wi wi-wu-${day.icon}`
+      forecast.icon = day.icon
       forecastList.push(forecast)
     }
     const date = new Date()

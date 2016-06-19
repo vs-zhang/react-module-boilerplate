@@ -7,6 +7,7 @@ const initialState = {
   iconClass: '',
   dateString: '',
   timeString: '',
+  icon: 'unknown',
   forecastList: [],
   tempMin: 0,
   tempMax: 0
