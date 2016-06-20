@@ -1,23 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { searchWeatherAction } from './actions'
+import { searchWeatherAction, updateTimeAction } from './actions'
 import { name } from './__init__'
 import CSSModules from 'react-css-modules'
 import styles from './weather.scss'
-import sunnyImage from '../../assets/images/weather_icons/sunny.png'
 
 const mapStateToProps = (state) => {
   const model = state[name]
 
-  const city = model.city
-  const description = model.description
-  const humidity = model.humidity
-  const temp = model.temp
-  const forecastList = model.forecastList
-  const dateString = model.dateString
-  const timeString = model.timeString
-  const icon = model.icon
-  const shouldFetch = model.shouldFetch
+  const {
+    city,
+    description,
+    humidity,
+    temp,
+    forecastList,
+    dateString,
+    timeString,
+    icon,
+    shouldFetch
+    } = model
 
   return {
     city,
@@ -51,6 +52,9 @@ class WeatherComponent extends React.Component {
     if (shouldFetch) {
       dispatch(searchWeatherAction(this.props.city))
     }
+    window.setInterval(() => {
+      dispatch(updateTimeAction())
+    }, 1000)
   }
 
   getImageUrl(icon = 'unknown') {

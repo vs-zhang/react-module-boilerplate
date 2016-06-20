@@ -13,6 +13,16 @@ function getForecastWeatherData(location) {
   return axios.get(forecastWeatherURL)
 }
 
+function getTimeString(date) {
+  const hour = date.getHours()
+  const min = date.getMinutes()
+  const second = date.getSeconds()
+  const hourString = hour > 10 ? hour : `0${hour}`
+  const minString = min > 10 ? min : `0${min}`
+  const secondString = second > 10 ? second : `0${second}`
+  return `${hourString}:${minString}:${secondString}`
+}
+
 function fetchWeatherDataAPI(location, callback) {
   axios.all([getCurrentWeatherData(location), getForecastWeatherData(location)])
     .then(axios.spread((current, forecast) => {
@@ -49,7 +59,7 @@ function fetchWeatherData(dispatch, location) {
       description: weather,
       humidity: relative_humidity,
       temp: Math.round(temp_f),
-      timeString: `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`,
+      timeString: getTimeString(date),
       dateString: date.toDateString(),
       shouldFetch: false,
       icon,
@@ -79,9 +89,25 @@ function searchWeather(dispatch, searchText) {
   })
 }
 
+function updateTime(dispatch) {
+  const date = new Date()
+  const payload = {
+    timeString: getTimeString(date)
+  }
+  dispatch({
+    type: 'UPDATE_TIME',
+    payload
+  })
+}
+
 export function searchWeatherAction(searchText = 'Boston, MA') {
   return (dispatch, getState) => {
-    console.log(getState())
     searchWeather(dispatch, searchText)
+  }
+}
+
+export function updateTimeAction() {
+  return dispatch => {
+    updateTime(dispatch)
   }
 }

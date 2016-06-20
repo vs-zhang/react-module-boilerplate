@@ -14,7 +14,6 @@ export const CoreLayout = ({ children }) => (
   <div>
     <HeaderLayout />
     <div className={styles.container}>{children}</div>
-    {template}
   </div>
 )
 

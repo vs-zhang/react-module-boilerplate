@@ -17,6 +17,8 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case 'SEARCH_DONE':
       return Object.assign({}, state, action.payload)
+    case 'UPDATE_TIME':
+      return Object.assign({}, state, action.payload)
     default:
       return state
   }
