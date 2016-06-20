@@ -17,9 +17,9 @@ function getTimeString(date) {
   const hour = date.getHours()
   const min = date.getMinutes()
   const second = date.getSeconds()
-  const hourString = hour > 10 ? hour : `0${hour}`
-  const minString = min > 10 ? min : `0${min}`
-  const secondString = second > 10 ? second : `0${second}`
+  const hourString = hour >= 10 ? hour : `0${hour}`
+  const minString = min >= 10 ? min : `0${min}`
+  const secondString = second >= 10 ? second : `0${second}`
   return `${hourString}:${minString}:${secondString}`
 }
 
