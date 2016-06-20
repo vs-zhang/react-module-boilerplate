@@ -4,6 +4,9 @@ import { searchWeatherAction, updateTimeAction } from './actions'
 import { name } from './__init__'
 import CSSModules from 'react-css-modules'
 import styles from './weather.scss'
+import classNames from 'classnames/bind'
+
+const cx = classNames.bind(styles)
 
 const mapStateToProps = (state) => {
   const model = state[name]
@@ -34,7 +37,8 @@ const mapStateToProps = (state) => {
 }
 
 const initialState = {
-  searchText: ''
+  searchText: '',
+  isFlip: false
 }
 
 class WeatherComponent extends React.Component {
@@ -45,6 +49,7 @@ class WeatherComponent extends React.Component {
     this.handleChange = ::this.handleChange
     this.handleSubmit = ::this.handleSubmit
     this.getImageUrl = ::this.getImageUrl
+    this.editCity = ::this.editCity
   }
 
   componentDidMount() {
@@ -72,6 +77,10 @@ class WeatherComponent extends React.Component {
     }
   }
 
+  editCity() {
+    this.setState({ isFlip: true })
+  }
+
   render() {
     const {
       city,
@@ -84,13 +93,21 @@ class WeatherComponent extends React.Component {
       icon
       } = this.props
 
+    const containerClass = cx({
+      container: true,
+      hover: this.state.isFlip
+    })
+
     return (
-      <div styleName="container">
+      <div className={containerClass}>
         <div styleName="flipper">
           <div styleName="front">
             <div styleName="header">
               <div styleName="city">
-                <div styleName="name">{city}</div>
+                <div styleName="name">
+                  {city}
+                  <i onClick={this.editCity} className="fa fa-pencil-square-o" styleName="edit-icon"></i>
+                </div>
                 <div styleName="desc">{description}</div>
               </div>
               <div styleName="clock">{timeString}</div>

@@ -4,7 +4,7 @@
   box-shadow: 3px 3px 3px lightgray;
   border: 1px solid #D3D3D3;
   perspective: 1000px;
-  &:hover {
+  &.hover {
     .flipper {
       transform: rotateY(180deg);
     }
@@ -39,9 +39,15 @@
       .name {
         font-size: 18px;
         line-height: 1.5;
+        .edit-icon {
+          font-size: 13px;
+          margin-left: 5px;
+          vertical-align: top;
+          cursor: pointer;
+        }
       }
       .desc {
-        font-size: 14px;
+        font-size: 12px;
       }
     }
     .clock {
