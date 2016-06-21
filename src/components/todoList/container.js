@@ -5,6 +5,7 @@ import * as actions from './actions'
 import { name } from './__init__'
 import * as todoItem from '../todoItem'
 import styles from './todoList.scss'
+import CSSModules from 'react-css-modules'
 
 const initialState = {
   inputText: ''
@@ -34,18 +35,36 @@ class TodoListComponent extends React.Component {
 
   render() {
     return (
-      <div>
-        <input
-          value={this.state.inputText}
-          onKeyDown={this.handleSubmit}
-          className={styles.input}
-          onChange={this.handleChange}
-        />
-        <button onClick={this.handleSubmit} className={styles.btn}>Add</button>
-        {this.props.model.map((t, index) => (
-          <todoItem.TodoItemComponent text={t} key={index} />
-          )
-        )}
+      <div styleName="container">
+        <div styleName="header">
+        </div>
+
+        <div styleName="content">
+          <div styleName="todo-input">
+            <div styleName="todo-status"></div>
+            <div styleName="todo-content">
+              <input
+                value={this.state.inputText}
+                onKeyDown={this.handleSubmit}
+                styleName="input"
+                onChange={this.handleChange}
+                placeholder="What needs to be done"
+              />
+            </div>
+          </div>
+
+
+          {this.props.model.map((t, index) => (
+            <div styleName="todo-item">
+              <div styleName="todo-status">
+                <input styleName="todo-status-checkbox" type="checkbox" />
+              </div>
+              <div styleName="todo-content">
+                <todoItem.TodoItemComponent text={t} key={index} />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     )
   }
@@ -64,4 +83,4 @@ TodoListComponent.propTypes = {
   add: React.PropTypes.func.isRequired
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoListComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(CSSModules(TodoListComponent, styles))

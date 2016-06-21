@@ -1,16 +1,57 @@
 @import '../../style/var';
 
-.btn {
-  width: 100px;
-  color: $flat-white;
-  background-color: $flat-blue;
-  border: 0;
-  border-radius: 2px;
-  cursor: pointer;
-  margin-left: 5px;
-}
-
-.input {
-  width: 200px;
-  height: 20px;
+.container {
+  background-color: #F9F9F9;
+  min-height: 265px;
+  box-shadow: 3px 3px 3px lightgray;
+  border: 1px solid #D3D3D3;
+  .header {
+    background-color: $flat-blue;
+    padding: 20px;
+    .input-box {
+      margin: auto;
+    }
+    .input {
+      height: 30px;
+      width: 50%;
+    }
+  }
+  .content {
+    .todo-status {
+      width: 60px;
+      height: 45px;
+      display: inline-block;
+      border-right: 1px solid $flat-red;
+      position: relative;
+      .todo-status-checkbox {
+        vertical-align: middle;
+        position: absolute;
+        top: 14px;
+        left: 20px;
+      }
+    }
+    .todo-content {
+      display: inline-block;
+      margin-left: 3px;
+      vertical-align: top;
+      padding: 10px;
+      width: calc(100% - 90px);
+      border-left: 1px solid $flat-red;
+      height: 45px;
+    }
+    .todo-input {
+      border-bottom: 1px solid lightgray;
+      height: 45px;
+      .input {
+        width: 100%;
+        height: 25px;
+        outline: none
+      }
+    }
+    .todo-item {
+      background-color: #F9F9F9;
+      border-bottom: 1px solid lightgray;
+      height: 45px;
+    }
+  }
 }

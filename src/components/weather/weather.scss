@@ -4,6 +4,7 @@
   box-shadow: 3px 3px 3px lightgray;
   border: 1px solid #D3D3D3;
   perspective: 1000px;
+  margin-bottom: 10px;
   &.hover {
     .flipper {
       transform: rotateY(180deg);
@@ -47,7 +48,7 @@
     padding: 10px;
     .city {
       display: inline-block;
-      width: 70%;
+      width: 65%;
       vertical-align: top;
       .name {
         font-size: 18px;
@@ -65,7 +66,7 @@
     }
     .clock {
       display: inline-block;
-      width: 30%;
+      width: 35%;
       font-size: 25px;
       vertical-align: top;
       text-align: right;

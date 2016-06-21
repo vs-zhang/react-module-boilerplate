@@ -1,4 +1,4 @@
-export const initialState = ['Something todo']
+export const initialState = ['React', 'Redux', 'React CSS Module', 'Webpack']
 import { ADD } from './actions'
 
 export default (state = initialState, action) => {
