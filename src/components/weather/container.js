@@ -67,7 +67,7 @@ class WeatherComponent extends React.Component {
   }
 
   handleChange(e) {
-    this.setState({searchText: e.target.value})
+    this.setState({ searchText: e.target.value })
   }
 
   handleSubmit() {
@@ -78,7 +78,7 @@ class WeatherComponent extends React.Component {
   }
 
   editCity() {
-    this.setState({isFlip: true})
+    this.setState({ isFlip: true })
   }
 
   render() {
@@ -145,11 +145,16 @@ class WeatherComponent extends React.Component {
                     <div styleName="forecastboxcondition">{t.conditions}</div>
                     <div>{t.tempHigh}/{t.tempLow}</div>
                     <div styleName="forecastboxicon">
-                      <img styleName="forecastboximage" src={this.getImageUrl(t.icon)} alt={t.icon} />
+                      <img
+                        styleName="forecastboximage"
+                        src={this.getImageUrl(t.icon)}
+                        alt={t.icon}
+                      />
                     </div>
                   </div>
                   )
                 )}
+              </div>
             </div>
           </div>
 
