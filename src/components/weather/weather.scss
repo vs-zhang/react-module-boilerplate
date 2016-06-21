@@ -23,8 +23,21 @@
       transform: rotateY(180deg);
       backface-visibility: hidden;
       position: absolute;
-      top: 140px;
-      left: 62px;
+      top: 150px;
+      left: 110px;
+      width: 250px;
+      height: 30px;
+      input {
+        width: 200px;
+        height: 30px;
+      }
+      .searchBtn {
+        width: 50px;
+        height: 30px;
+        background-color: #3498DB;
+        color: white;
+        border: 0;
+      }
     }
   }
 
@@ -72,6 +85,7 @@
         .currenthumidity {
           position: absolute;
           top: 0;
+          font-weight: 600;
         }
         .currentwind {
           position: absolute;
@@ -107,6 +121,7 @@
           position: absolute;
           right: 0;
           bottom: 0;
+          font-weight: 600;
         }
       }
     }

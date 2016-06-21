@@ -67,7 +67,7 @@ class WeatherComponent extends React.Component {
   }
 
   handleChange(e) {
-    this.setState({ searchText: e.target.value })
+    this.setState({searchText: e.target.value})
   }
 
   handleSubmit() {
@@ -78,7 +78,7 @@ class WeatherComponent extends React.Component {
   }
 
   editCity() {
-    this.setState({ isFlip: true })
+    this.setState({isFlip: true})
   }
 
   render() {
@@ -126,7 +126,7 @@ class WeatherComponent extends React.Component {
                 </div>
                 <div styleName="currenticon">
                   <div>
-                    <img styleName="currentimage" src={this.getImageUrl(icon)} alt={icon} />
+                    <img styleName="currentimage" src={this.getImageUrl(icon)} alt={icon}/>
                   </div>
                 </div>
                 <div styleName="currentright">
@@ -150,7 +150,6 @@ class WeatherComponent extends React.Component {
                   </div>
                   )
                 )}
-              </div>
             </div>
           </div>
 
@@ -160,7 +159,7 @@ class WeatherComponent extends React.Component {
               value={this.state.searchText}
               onChange={this.handleChange}
             />
-            <button onClick={this.handleSubmit}>Search</button>
+            <button styleName="searchBtn" onClick={this.handleSubmit}>Search</button>
           </div>
         </div>
       </div>
