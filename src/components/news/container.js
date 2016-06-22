@@ -1,10 +1,25 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import CSSModules from 'react-css-modules'
+import { searchNewsAction } from './actions'
+import styles from './news.scss'
 
-export default class NewsComponent extends React.Component {
-
+class NewsComponent extends React.Component {
+  componentDidMount() {
+    const { dispatch } = this.props
+    dispatch(searchNewsAction())
+  }
   render() {
     return (
-      <div>News</div>
+      <div styleName="container">
+        News
+      </div>
     )
   }
 }
+
+NewsComponent.propTypes = {
+  dispatch: React.PropTypes.func.isRequired
+}
+
+export default connect()(CSSModules(NewsComponent, styles))
