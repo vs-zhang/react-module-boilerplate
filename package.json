@@ -6,7 +6,7 @@
   },
   "description": "Boilerplate for ReactJS",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "nodemon server.js --watch server.js",
     "test": "mocha --require tests/helpers/browser.js tests/**/*.spec.js",
     "test:watch": "mocha -w tests/helpers/browser.js tests/**/*.spec.js",
     "build:prod": "NODE_ENV=production webpack -p --config webpack.prod.config.js",
