@@ -1,13 +1,15 @@
 import * as axios from 'axios'
 
 function fetchNewsAPI(searchText, callback) {
-
+  axios.get('/google_news').then((res) => {
+    callback(res.data)
+  })
 }
 
 function searchNews(dispatch, searchText) {
   fetchNewsAPI(searchText, (data) => {
-    if (data.results.length > 0) {
-      console.log(data)
+    if (data.length > 0) {
+      console.log('got something')
     }
   })
 }

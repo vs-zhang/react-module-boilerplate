@@ -19,7 +19,7 @@ ReactDOM.render(
 if (module.hot) {
   module.hot.accept('./App', () => {
     /* eslint-disable global-require */
-    const NewApp = require('./App').AppLayout
+    const NewApp = require('./App').App
     /* eslint-enable global-require */
     ReactDOM.render(
       <NewApp store={store} history={history} />,

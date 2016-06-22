@@ -9,6 +9,7 @@ class NewsComponent extends React.Component {
     const { dispatch } = this.props
     dispatch(searchNewsAction())
   }
+
   render() {
     return (
       <div styleName="container">

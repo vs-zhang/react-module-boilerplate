@@ -3,4 +3,5 @@ dist/**
 webpack.config.js
 webpack.prod.config.js
 server.js
+bundle.js
 tests/helpers/*
