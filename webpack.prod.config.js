@@ -50,10 +50,6 @@ module.exports = {
         }
       },
       {
-        test: /\.json?$/,
-        loader: 'json'
-      },
-      {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]!sass'),
         include: path.join(__dirname, 'src')

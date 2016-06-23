@@ -48,7 +48,6 @@ app.get('/google_news', function response(req, res) {
     request('https://www.google.com/search?q=boston&source=lnms&tbm=nws', function (error, response, html) {
       var $ = cheerio.load(html);
       $("div.g").each(function(i, element) {
-        "use strict";
         var newsCard = $(this),
           item = { title : "", imgSrc : "", link : ""};
         var h3 = newsCard.find('h3');
