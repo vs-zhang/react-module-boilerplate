@@ -1,6 +1,25 @@
+@import '../../style/var';
+
 .container {
   background-color: #F7F7F7;
   padding: 10px;
   min-height: calc(100vh - 120px);
   box-shadow: 3px 3px 3px lightgray;
+  .news-card {
+    img {
+      display: inline-block;
+      width: 70px;
+      height: 70px;
+      margin-right: 20px;
+    }
+    h3 {
+      display: inline-block;
+      vertical-align: top;
+      margin: 0;
+      font-weight: 600;
+      font-size: 14px;
+      max-width: 350px;
+      color: $flat-dark-blue;
+    }
+  }
 }

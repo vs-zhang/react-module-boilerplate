@@ -9,7 +9,13 @@ function fetchNewsAPI(searchText, callback) {
 function searchNews(dispatch, searchText) {
   fetchNewsAPI(searchText, (data) => {
     if (data.length > 0) {
-      console.log('got something')
+      dispatch({
+        type: 'FETCH_NEWS_DONE',
+        payload: {
+          shouldFetch: false,
+          news: data
+        }
+      })
     }
   })
 }
