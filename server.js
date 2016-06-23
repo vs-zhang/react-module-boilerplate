@@ -2,8 +2,6 @@ var path = require('path');
 var express = require('express');
 var webpack = require('webpack');
 var webpackConfig = require('./webpack.config.js');
-var webpackDevMiddleware = require('webpack-dev-middleware');
-var webpackHotMiddleware = require('webpack-hot-middleware');
 var request = require('request');
 var cheerio = require('cheerio');
 request = request.defaults({jar: true});
@@ -13,8 +11,9 @@ var APP_PORT = isProduction ? process.env.PORT : 3000;
 var app = new express();
 
 if (!isProduction) {
+  var webpackDevMiddleware = require('webpack-dev-middleware');
+  var webpackHotMiddleware = require('webpack-hot-middleware');
   var compiler = webpack(webpackConfig);
-
   app.use(webpackDevMiddleware(compiler, {
     publicPath: webpackConfig.output.publicPath,
     historyApiFallback: true,
@@ -31,7 +30,7 @@ if (!isProduction) {
 
 } else {
   app.use(express.static('./dist'));
-  app.get('*', function response(req, res) {
+  app.get('/', function response(req, res) {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
   });
 }
