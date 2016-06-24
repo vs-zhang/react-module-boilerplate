@@ -1,4 +1,6 @@
 .container {
+  max-width: 1200px;
+  margin: auto;
   .todo {
     display: inline-block;
     vertical-align: top;
@@ -15,5 +17,6 @@
     width: 35%;
     max-width: 500px;
     float: right;
+    position: fixed;
   }
 }

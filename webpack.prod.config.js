@@ -55,7 +55,7 @@ module.exports = {
         include: path.join(__dirname, 'src')
       },
       {
-        test: /\.(png|jpg)$/,
+        test: /\.(png|jpg|svg)$/,
         loader: 'url-loader?limit=8192&name=images/[name]-[hash:6].[ext]'
       }
     ]

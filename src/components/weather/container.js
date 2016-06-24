@@ -5,7 +5,7 @@ import { name } from './__init__'
 import CSSModules from 'react-css-modules'
 import styles from './weather.scss'
 import classNames from 'classnames/bind'
-
+import closeIcon from '../../assets/icons/cross-thin.svg'
 const cx = classNames.bind(styles)
 
 const mapStateToProps = (state) => {
@@ -49,7 +49,7 @@ class WeatherComponent extends React.Component {
     this.handleChange = ::this.handleChange
     this.handleSubmit = ::this.handleSubmit
     this.getImageUrl = ::this.getImageUrl
-    this.editCity = ::this.editCity
+    this.flipCard = ::this.flipCard
   }
 
   componentDidMount() {
@@ -77,8 +77,8 @@ class WeatherComponent extends React.Component {
     }
   }
 
-  editCity() {
-    this.setState({ isFlip: true })
+  flipCard() {
+    this.setState({ isFlip: !this.state.isFlip })
   }
 
   render() {
@@ -106,7 +106,7 @@ class WeatherComponent extends React.Component {
               <div styleName="city">
                 <div styleName="name">
                   {city}
-                  <i onClick={this.editCity} className="fa fa-pencil-square-o" styleName="edit-icon"></i>
+                  <i onClick={this.flipCard} className="fa fa-pencil-square-o" styleName="edit-icon"></i>
                 </div>
                 <div styleName="desc">{description}</div>
               </div>
@@ -160,11 +160,16 @@ class WeatherComponent extends React.Component {
 
 
           <div styleName="back">
-            <input
-              value={this.state.searchText}
-              onChange={this.handleChange}
-            />
-            <button styleName="searchBtn" onClick={this.handleSubmit}>Search</button>
+            <div styleName="close-icon">
+              <img src={closeIcon} onClick={this.flipCard} alt="close icon" />
+            </div>
+            <div styleName="search-form">
+              <input
+                value={this.state.searchText}
+                onChange={this.handleChange}
+              />
+              <button styleName="searchBtn" onClick={this.handleSubmit}>Search</button>
+            </div>
           </div>
         </div>
       </div>
