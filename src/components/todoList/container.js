@@ -25,7 +25,7 @@ class TodoListComponent extends React.Component {
   }
 
   handleSubmit(e) {
-    if (e.keyCode === 13 || e.type === 'click') {
+    if (e.keyCode === 13) {
       if (this.state.inputText.trim()) {
         this.props.add(this.state.inputText)
         this.setState(initialState)

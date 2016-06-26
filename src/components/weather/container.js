@@ -70,10 +70,12 @@ class WeatherComponent extends React.Component {
     this.setState({ searchText: e.target.value })
   }
 
-  handleSubmit() {
-    if (this.state.searchText.trim()) {
-      this.props.dispatch(searchWeatherAction(this.state.searchText))
-      this.setState(initialState)
+  handleSubmit(e) {
+    if(e.keyCode === 13 || e.type === 'click' ) {
+      if (this.state.searchText.trim()) {
+        this.props.dispatch(searchWeatherAction(this.state.searchText))
+        this.setState(initialState)
+      }
     }
   }
 
@@ -168,6 +170,7 @@ class WeatherComponent extends React.Component {
                 placeholder="zipcode"
                 value={this.state.searchText}
                 onChange={this.handleChange}
+                onKeyDown={this.handleSubmit}
               />
               <button styleName="searchBtn" onClick={this.handleSubmit}>Search</button>
             </div>

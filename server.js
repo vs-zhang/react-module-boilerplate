@@ -43,7 +43,7 @@ app.get('/google_news/:index', function response(req, res) {
       }
     },
     result = [],
-    index = req.params.index,
+    index = req.params.index - 1,
     url = `https://www.google.com/search?q=boston&tbm=nws&tbs=sbd:1&start=${ index * 10}`;
 
   request(options, function () {

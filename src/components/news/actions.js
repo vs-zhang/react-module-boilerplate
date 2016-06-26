@@ -22,7 +22,6 @@ function searchNews(dispatch, page) {
 }
 
 export function searchNewsAction(page = 1) {
-  console.log(page)
   return dispatch => {
     searchNews(dispatch, page)
   }
