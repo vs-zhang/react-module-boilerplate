@@ -4,6 +4,10 @@ import * as todoList from '../todoList'
 import * as weather from '../weather'
 import * as news from '../news'
 
+if(module.hot) {
+  module.hot.accept()
+}
+
 const reducer = combineReducers({
   [todoList.name]: todoList.reducer,
   [weather.name]: weather.reducer,
