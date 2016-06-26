@@ -1,27 +1,29 @@
 import * as axios from 'axios'
 
-function fetchNewsAPI(searchText, callback) {
-  axios.get('/google_news').then((res) => {
+function fetchNewsAPI(page, callback) {
+  axios.get(`/google_news/${page}`).then((res) => {
     callback(res.data)
   })
 }
 
-function searchNews(dispatch, searchText) {
-  fetchNewsAPI(searchText, (data) => {
+function searchNews(dispatch, page) {
+  fetchNewsAPI(page, (data) => {
     if (data.length > 0) {
       dispatch({
         type: 'FETCH_NEWS_DONE',
         payload: {
           shouldFetch: false,
-          news: data
+          news: data,
+          page
         }
       })
     }
   })
 }
 
-export function searchNewsAction(searchText = 'Boston') {
+export function searchNewsAction(page = 1) {
+  console.log(page)
   return dispatch => {
-    searchNews(dispatch, searchText)
+    searchNews(dispatch, page)
   }
 }

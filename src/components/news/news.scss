@@ -15,18 +15,48 @@
     margin-bottom: 10px;
     img {
       display: inline-block;
-      width: 80px;
-      height: 80px;
+      width: 72px;
+      height: 72px;
       margin-right: 20px;
-    }
-    h3 {
-      display: inline-block;
       vertical-align: top;
-      margin: 0;
-      font-weight: 400;
-      font-size: 14px;
-      max-width: 350px;
-      color: $flat-dark-blue;
+    }
+    .news-content {
+      width: calc(100% - 120px);
+      display: inline-block;
+      h3 {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0;
+        font-weight: 400;
+        font-size: 14px;
+        max-width: 400px;
+        color: $flat-dark-blue;
+      }
+      span {
+        font-size: 12px;
+        color: $flat-green;
+        display: block;
+      }
+      p {
+        margin: 5px 0;
+        font-size: 12px;
+      }
+    }
+
+  }
+  .load-more-btn {
+    display: flex;
+    justify-content: center;
+    button {
+      background-color: $flat-blue;
+      color: $flat-white;
+      border: none;
+      padding: 10px 30px;
+      outline: none;
+      cursor: pointer;
+      &:hover {
+        background-color: $flat-dark-blue;
+      }
     }
   }
 }

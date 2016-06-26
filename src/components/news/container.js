@@ -9,21 +9,34 @@ const mapStateToProps = (state) => {
   const model = state[name]
   const {
     shouldFetch,
-    news
+    news,
+    page
     } = model
 
   return {
     shouldFetch,
-    news
+    news,
+    page
   }
 }
 
 class NewsComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.loadNews = ::this.loadNews
+  }
+
   componentDidMount() {
     const { dispatch, shouldFetch } = this.props
     if(shouldFetch) {
       dispatch(searchNewsAction())
     }
+  }
+
+  loadNews() {
+    const { dispatch, page } = this.props
+    console.log(page)
+    dispatch(searchNewsAction(page + 1))
   }
 
   render() {
@@ -37,10 +50,18 @@ class NewsComponent extends React.Component {
           <div key={index} styleName="news-card">
             <a href={t.link} target="blank">
               <img src={t.imgSrc} alt={index} />
-              <h3>{t.title}</h3>
             </a>
+            <div styleName="news-content">
+              <h3><a href={t.link} target="blank">{t.title}</a></h3>
+              <span>{t.by}</span>
+              <p>{t.desc}</p>
+            </div>
           </div>
         ))}
+
+        <div styleName="load-more-btn">
+          <button onClick={this.loadNews}>Load more</button>
+        </div>
       </div>
     )
   }
@@ -49,6 +70,7 @@ class NewsComponent extends React.Component {
 NewsComponent.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
   shouldFetch: React.PropTypes.bool.isRequired,
+  page: React.PropTypes.number.isRequired,
   news: React.PropTypes.array.isRequired
 }
 

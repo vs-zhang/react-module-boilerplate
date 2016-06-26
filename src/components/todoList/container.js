@@ -55,7 +55,7 @@ class TodoListComponent extends React.Component {
 
 
           {this.props.model.map((t, index) => (
-            <div styleName="todo-item">
+            <div styleName="todo-item" key={index}>
               <div styleName="todo-status">
                 <input styleName="todo-status-checkbox" type="checkbox" />
               </div>

@@ -165,6 +165,7 @@ class WeatherComponent extends React.Component {
             </div>
             <div styleName="search-form">
               <input
+                placeholder="zipcode"
                 value={this.state.searchText}
                 onChange={this.handleChange}
               />

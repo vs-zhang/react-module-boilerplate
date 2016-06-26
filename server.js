@@ -1,14 +1,14 @@
-var path = require('path');
-var express = require('express');
-var webpack = require('webpack');
-var webpackConfig = require('./webpack.config.js');
-var request = require('request');
-var cheerio = require('cheerio');
-request = request.defaults({jar: true});
+var path = require('path'),
+  express = require('express'),
+  webpack = require('webpack'),
+  webpackConfig = require('./webpack.config.js'),
+  request = require('request'),
+  cheerio = require('cheerio'),
+  isProduction = process.env.NODE_ENV === 'production',
+  APP_PORT = isProduction ? process.env.PORT : 3000,
+  app = new express();
 
-var isProduction = process.env.NODE_ENV === 'production';
-var APP_PORT = isProduction ? process.env.PORT : 3000;
-var app = new express();
+request = request.defaults({jar: true});
 
 if (!isProduction) {
   var webpackDevMiddleware = require('webpack-dev-middleware');
@@ -35,25 +35,30 @@ if (!isProduction) {
   });
 }
 
-app.get('/google_news', function response(req, res) {
+app.get('/google_news/:index', function response(req, res) {
   var options = {
-    url: 'https://www.google.com',
-    headers: {
-      'User-Agent': 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; rv:1.9.2.16) Gecko/20110319 Firefox/3.6.16'
-    }
-  };
-  var result = []
+      url: 'https://www.google.com',
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; rv:1.9.2.16) Gecko/20110319 Firefox/3.6.16'
+      }
+    },
+    result = [],
+    index = req.params.index,
+    url = `https://www.google.com/search?q=boston&tbm=nws&tbs=sbd:1&start=${ index * 10}`;
+
   request(options, function () {
-    request('https://www.google.com/search?q=boston&source=lnms&tbm=nws', function (error, response, html) {
+    request(url, function (error, response, html) {
       var $ = cheerio.load(html);
-      $("div.g").each(function(i, element) {
+      $("div.g").each(function (i, element) {
         var newsCard = $(this),
-          item = { title : "", imgSrc : "", link : ""};
+          item = {title: "", imgSrc: "", link: "", by: "", desc: ""};
         var h3 = newsCard.find('h3');
         item.title = h3.text();
         item.imgSrc = newsCard.find('img').attr('src');
         var href = h3.children().first().attr('href');
-        item.link = /http(.*)&sa/.exec(href)[0].slice(0,-3);
+        item.link = /http(.*)&sa/.exec(href)[0].slice(0, -3);
+        item.by = h3.next().text();
+        item.desc = h3.next().next().text();
         result.push(item);
       });
       res.send(result)
