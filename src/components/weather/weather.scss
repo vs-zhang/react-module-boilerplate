@@ -93,48 +93,48 @@
     color: $flat-dark;
     .current {
       padding: 10px;
-      .currentleft {
+      .current-left {
         display: inline-block;
         width: 30%;
         font-size: 11px;
         height: 100px;
         position: relative;
-        .currenthumidity {
+        .current-humidity {
           position: absolute;
           top: 0;
           font-weight: 600;
         }
-        .currentwind {
+        .current-wind {
           position: absolute;
           bottom: 0;
         }
       }
-      .currenticon {
+      .current-icon {
         display: inline-block;
         width: 40%;
         text-align: center;
         font-size: 65px;
         vertical-align: top;
         color: $flat-dark-blue;
-        .currentimage {
+        .current-image {
           width: 100px;
           height: 100px;
         }
       }
-      .currentright {
+      .current-right {
         display: inline-block;
         width: 30%;
         text-align: right;
         font-size: 11px;
         height: 100px;
         position: relative;
-        .currenttemp {
+        .current-temp {
           position: absolute;
           top: 0;
           right: 0;
           font-size: 25px;
         }
-        .currentdate {
+        .current-date {
           position: absolute;
           right: 0;
           bottom: 0;
@@ -145,7 +145,7 @@
     .forecast {
       border-top: 1px solid lightgray;
       padding: 10px;
-      .forecastbox {
+      .forecast-box {
         display: inline-block;
         width: 25%;
         text-align: center;
@@ -153,15 +153,15 @@
         &:not(:last-of-type) {
           border-right: 1px solid lightgray
         }
-        .forecastboxcondition {
+        .forecast-box-condition {
           font-size: 10px;
           height: 35px;
           padding: 5px 0;
         }
-        .forecastboxicon {
+        .forecast-box-icon {
           color: #B5B5B5;
           font-size: 25px;
-          .forecastboximage {
+          .forecast-box-image {
             width: 40px;
             height: 40px;
           }

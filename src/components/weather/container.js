@@ -115,38 +115,38 @@ class WeatherComponent extends React.Component {
 
             <div styleName="content">
               <div styleName="current">
-                <div styleName="currentleft">
-                  <div styleName="currenthumidity">
+                <div styleName="current-left">
+                  <div styleName="current-humidity">
                     Humidity: {humidity}
                   </div>
-                  <div styleName="currentwind">
+                  <div styleName="current-wind">
                     <i className="wi wi-strong-wind"></i>
                     10mph
                   </div>
                 </div>
-                <div styleName="currenticon">
+                <div styleName="current-icon">
                   <div>
-                    <img styleName="currentimage" src={this.getImageUrl(icon)} alt={icon}/>
+                    <img styleName="current-image" src={this.getImageUrl(icon)} alt={icon}/>
                   </div>
                 </div>
-                <div styleName="currentright">
-                  <div styleName="currenttemp">
+                <div styleName="current-right">
+                  <div styleName="current-temp">
                     {temp}°F
                   </div>
-                  <div styleName="currentdate">
+                  <div styleName="current-date">
                     {dateString}
                   </div>
                 </div>
               </div>
               <div styleName="forecast">
                 {forecastList.map((t, index) => (
-                  <div key={index} styleName="forecastbox">
+                  <div key={index} styleName="forecast-box">
                     <div>{t.day}</div>
-                    <div styleName="forecastboxcondition">{t.conditions}</div>
+                    <div styleName="forecast-box-condition">{t.conditions}</div>
                     <div>{t.tempHigh}/{t.tempLow}</div>
-                    <div styleName="forecastboxicon">
+                    <div styleName="forecast-box-icon">
                       <img
-                        styleName="forecastboximage"
+                        styleName="forecast-box-image"
                         src={this.getImageUrl(t.icon)}
                         alt={t.icon}
                       />
