@@ -48,11 +48,11 @@ class NewsComponent extends React.Component {
       <div styleName="container">
         {news.map((t, index) => (
           <div key={index} styleName="news-card">
-            <a href={t.link} target="blank">
+            <a href={t.link} target="_blank">
               <img src={t.imgSrc} alt={index} />
             </a>
             <div styleName="news-content">
-              <h3><a href={t.link} target="blank">{t.title}</a></h3>
+              <h3><a href={t.link} target="_blank">{t.title}</a></h3>
               <span>{t.by}</span>
               <p>{t.desc}</p>
             </div>
