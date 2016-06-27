@@ -4,8 +4,8 @@ import { searchWeatherAction, updateTimeAction } from './actions'
 import { name } from './__init__'
 import CSSModules from 'react-css-modules'
 import styles from './weather.scss'
-import classNames from 'classnames/bind'
 import closeIcon from '../../assets/icons/cross-thin.svg'
+import classNames from 'classnames/bind'
 const cx = classNames.bind(styles)
 
 const mapStateToProps = (state) => {

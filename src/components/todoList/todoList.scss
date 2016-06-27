@@ -23,12 +23,6 @@
       display: inline-block;
       border-right: 1px solid $flat-red;
       position: relative;
-      .todo-status-checkbox {
-        vertical-align: middle;
-        position: absolute;
-        top: 14px;
-        left: 20px;
-      }
     }
     .todo-content {
       display: inline-block;
@@ -47,11 +41,6 @@
         height: 25px;
         outline: none
       }
-    }
-    .todo-item {
-      background-color: #F9F9F9;
-      border-bottom: 1px solid lightgray;
-      height: 45px;
     }
   }
 }

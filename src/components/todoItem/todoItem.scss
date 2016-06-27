@@ -1,5 +1,33 @@
-.wrap {
-  width: 100%;
-  background: #f3f3f3;
-  padding: 20px;
+@import '../../style/var';
+
+.todo-item {
+  background-color: #F9F9F9;
+  border-bottom: 1px solid lightgray;
+  height: 45px;
+  .todo-status {
+    width: 60px;
+    height: 45px;
+    display: inline-block;
+    border-right: 1px solid $flat-red;
+    position: relative;
+    .todo-status-checkbox {
+      vertical-align: middle;
+      position: absolute;
+      top: 14px;
+      left: 20px;
+    }
+  }
+  .todo-content {
+    display: inline-block;
+    margin-left: 3px;
+    vertical-align: top;
+    padding: 10px;
+    width: calc(100% - 90px);
+    border-left: 1px solid $flat-red;
+    height: 45px;
+    &.done {
+      color: lightgray;
+      text-decoration: line-through;
+    }
+  }
 }

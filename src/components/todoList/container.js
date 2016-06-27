@@ -2,10 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { name } from './__init__'
 import { addTodoAction, changeTodoStatusAction } from './actions'
-import * as todoItem from '../todoItem'
 import styles from './todoList.scss'
 import CSSModules from 'react-css-modules'
-
+import * as todoItem from '../todoItem'
 const initialState = {
   inputText: ''
 }
@@ -33,11 +32,6 @@ class TodoListComponent extends React.Component {
     }
   }
 
-  handleTodoStatus(index) {
-    const { dispatch } = this.props
-    dispatch(changeTodoStatusAction(index))
-  }
-
   render() {
     const { todos } = this.props
     return (
@@ -60,14 +54,7 @@ class TodoListComponent extends React.Component {
           </div>
 
           {todos.map((t, index) => (
-            <div styleName="todo-item" key={index}>
-              <div styleName="todo-status">
-                <input styleName="todo-status-checkbox" type="checkbox" checked={t.isDone} onChange={() => this.handleTodoStatus(index)}/>
-              </div>
-              <div styleName="todo-content">
-                <div>{t.name}</div>
-              </div>
-            </div>
+            <todoItem.TodoItemComponent index={index} name={t.name} isDone={t.isDone} key={index} />
           ))}
         </div>
       </div>

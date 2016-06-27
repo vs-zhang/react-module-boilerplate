@@ -1,6 +1,4 @@
 import { ADD, CHANGE_STATUS } from './action_types'
-import { } from './action_types'
-
 
 export function addTodoAction(text) {
   return dispatch => (

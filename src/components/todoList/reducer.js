@@ -2,6 +2,7 @@ const initialState = [
   {isDone: false, name: 'React'},
   {isDone: false, name: 'Redux'},
   {isDone: false, name: 'React CSS Module'},
+  {isDone: false, name: 'classnames'},
   {isDone: false, name: 'Webpack'}
 ]
 
