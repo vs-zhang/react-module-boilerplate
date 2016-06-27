@@ -1,5 +1,21 @@
-import { name } from './__init__'
+import { ADD, CHANGE_STATUS } from './action_types'
+import { } from './action_types'
 
-export const ADD = `${name}/ADD`
 
-export const add = (text) => ({ type: ADD, text })
+export function addTodoAction(text) {
+  return dispatch => (
+    dispatch({
+      type: ADD,
+      text: text
+    })
+  )
+}
+
+export function changeTodoStatusAction(index) {
+  return dispatch => (
+    dispatch({
+      type: CHANGE_STATUS,
+      index: index
+    })
+  )
+}

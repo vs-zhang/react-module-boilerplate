@@ -1,8 +1,7 @@
 import React from 'react'
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as actions from './actions'
 import { name } from './__init__'
+import { addTodoAction, changeTodoStatusAction } from './actions'
 import * as todoItem from '../todoItem'
 import styles from './todoList.scss'
 import CSSModules from 'react-css-modules'
@@ -16,8 +15,8 @@ class TodoListComponent extends React.Component {
   constructor(props) {
     super(props)
     this.state = initialState
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = ::this.handleChange
+    this.handleSubmit = ::this.handleSubmit
   }
 
   handleChange(e) {
@@ -27,13 +26,20 @@ class TodoListComponent extends React.Component {
   handleSubmit(e) {
     if (e.keyCode === 13) {
       if (this.state.inputText.trim()) {
-        this.props.add(this.state.inputText)
+        const { dispatch } = this.props
+        dispatch(addTodoAction(this.state.inputText))
         this.setState(initialState)
       }
     }
   }
 
+  handleTodoStatus(index) {
+    const { dispatch } = this.props
+    dispatch(changeTodoStatusAction(index))
+  }
+
   render() {
+    const { todos } = this.props
     return (
       <div styleName="container">
         <div styleName="header">
@@ -53,14 +59,13 @@ class TodoListComponent extends React.Component {
             </div>
           </div>
 
-
-          {this.props.model.map((t, index) => (
+          {todos.map((t, index) => (
             <div styleName="todo-item" key={index}>
               <div styleName="todo-status">
-                <input styleName="todo-status-checkbox" type="checkbox" />
+                <input styleName="todo-status-checkbox" type="checkbox" checked={t.isDone} onChange={() => this.handleTodoStatus(index)}/>
               </div>
               <div styleName="todo-content">
-                <todoItem.TodoItemComponent text={t} key={index} />
+                <div>{t.name}</div>
               </div>
             </div>
           ))}
@@ -71,16 +76,11 @@ class TodoListComponent extends React.Component {
 }
 
 const mapStateToProps = (state) => (
-  { model: state[name] }
-)
-
-const mapDispatchToProps = (dispatch) => (
-  bindActionCreators(actions, dispatch)
+  { todos: state[name] }
 )
 
 TodoListComponent.propTypes = {
-  model: React.PropTypes.array.isRequired,
-  add: React.PropTypes.func.isRequired
+  todos: React.PropTypes.array.isRequired
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CSSModules(TodoListComponent, styles))
+export default connect(mapStateToProps)(CSSModules(TodoListComponent, styles))
