@@ -6,7 +6,7 @@ import CSSModules from 'react-css-modules'
 import classNames from 'classnames/bind'
 const cx = classNames.bind(styles)
 
-class TodoItemComponent extends React.Component {
+export class TodoItemComponent extends React.Component {
   handleTodoStatus(index) {
     const { dispatch } = this.props
     dispatch(changeTodoStatusAction(index))
@@ -19,7 +19,7 @@ class TodoItemComponent extends React.Component {
       done: isDone
     })
     return (
-      <div styleName="todo-item" key={index}>
+      <section styleName="todo-item" key={index}>
         <div styleName="todo-status">
           <input styleName="todo-status-checkbox" type="checkbox" checked={isDone}
                  onChange={() => this.handleTodoStatus(index)}/>
@@ -27,7 +27,7 @@ class TodoItemComponent extends React.Component {
         <div className={contentClass}>
           <div>{name}</div>
         </div>
-      </div>
+      </section>
     )
   }
 }
