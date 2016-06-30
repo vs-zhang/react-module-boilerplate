@@ -1,4 +1,5 @@
 const stations = [
+  {name: 'Alewife', value: 'place-alfcl'},
   {name: 'Davis', value: 'place-davis'},
   {name: 'Porter', value: 'place-portr'},
   {name: 'Harvard', value: 'place-harsq'},
@@ -20,15 +21,15 @@ const stations = [
 
 const initialState = {
   shouldFetch: true,
-  inbound: {value: 'place-wlsta', name: 'Wollaston', info: {}},
-  outbound: {value: 'place-sstat', name: 'South Station', info: {}},
+  inbound: {value: 'place-wlsta',  info: [], direction: 'Northbound'},
+  outbound: {value: 'place-sstat', info: [], direction: 'Southbound'},
   stations
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case 'FETCH_MBTA_DONE':
-      return state
+      return Object.assign({}, state, action.payload)
     default:
       return state
   }

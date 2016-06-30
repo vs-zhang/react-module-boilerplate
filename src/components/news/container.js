@@ -35,7 +35,6 @@ class NewsComponent extends React.Component {
 
   loadNews() {
     const { dispatch, page } = this.props
-    console.log(page)
     dispatch(searchNewsAction(page + 1))
   }
 
