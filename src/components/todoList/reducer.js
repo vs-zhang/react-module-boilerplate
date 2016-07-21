@@ -1,9 +1,6 @@
 const initialState = [
   {isDone: false, name: 'React'},
-  {isDone: false, name: 'Redux'},
-  {isDone: false, name: 'React CSS Module'},
-  {isDone: false, name: 'classnames'},
-  {isDone: false, name: 'Webpack'}
+  {isDone: false, name: 'Redux'}
 ]
 
 import { ADD } from './action_types'

@@ -34,14 +34,16 @@ export class MBTAComponent extends React.Component {
   }
 
   render() {
-    const { stations, inbound, outbound } = this.props
+    const { stations, inbound, outbound, dispatch } = this.props
     return (
       <div styleName="container">
         <div styleName="header"></div>
         <div styleName="content">
           <div styleName="train-info">
             <div styleName="station-select">
-              <select defaultValue={outbound.value} >
+              <select
+                defaultValue={outbound.value}
+              >
                 {
                   stations.map((t, index) => (
                     <option value={t.value} key={index}>{t.name}</option>
@@ -52,14 +54,19 @@ export class MBTAComponent extends React.Component {
             <div styleName="stop-info">
               {
                 outbound.info.map((t,index) => (
-                  <div key={index}>{moment(t.sch_arr_dt*1000).fromNow()}</div>
+                  <div key={index} styleName="stop-clock">
+                    {t.time}
+                    <div>{t.label}</div>
+                  </div>
                 ))
               }
             </div>
           </div>
           <div styleName="train-info">
             <div styleName="station-select">
-              <select defaultValue={inbound.value} >
+              <select
+                defaultValue={inbound.value}
+              >
                 {
                   stations.map((t, index) => (
                     <option value={t.value} key={index}>{t.name}</option>
@@ -70,7 +77,10 @@ export class MBTAComponent extends React.Component {
             <div styleName="stop-info">
               {
                 inbound.info.map((t,index) => (
-                  <div key={index}>{moment(t.sch_arr_dt*1000).fromNow()}</div>
+                  <div key={index} styleName="stop-clock">
+                    {t.time}
+                    <div>{t.label}</div>
+                  </div>
                 ))
               }
             </div>
