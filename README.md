@@ -1,6 +1,9 @@
 ## React Module Boilerplate
 [![Build Status](https://travis-ci.org/vs-zhang/react-module-boilerplate.svg?branch=master)](https://travis-ci.org/vs-zhang/react-module-boilerplate)
 
+### DEMO
+* [DEMO](https://react-module-boilerplate.herokuapp.com/)
+
 ### How to Install
 
     npm install && npm start
